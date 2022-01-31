@@ -1,0 +1,30 @@
+{
+  "name": "@chef/component",
+  "version": "1.0.0",
+  "description": "Create Components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramsunvtech/chef-component.git"
+  },
+  "bin": {
+    "react-chef": "./recipes/index.js"
+  },
+  "keywords": [
+    "react-components",
+    "skeleton"
+  ],
+  "author": "Venkat.R",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramsunvtech/chef-component/issues"
+  },
+  "homepage": "https://github.com/ramsunvtech/chef-component#readme",
+  "dependencies": {
+    "event-stream": "^4.0.1",
+    "shelljs": "^0.8.5"
+  }
+}
