@@ -1,2 +1,2 @@
-# -chef-component
+# Chef Component
 Create Components
