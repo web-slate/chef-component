@@ -76,7 +76,6 @@ var s = fs.createReadStream('definitions.txt')
       console.log('Error while reading file.', err);
     })
     .on('end', function () {
-      shell.echo('//Sorry, this script requires git').to('test.js')
       console.log('It done!')
     })
   );

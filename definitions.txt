@@ -1,22 +1,22 @@
-Components/
+components/
+  blocks/
+    header/
+      Logo/
+      MainMenu/
+      ProfileMenu/
+      SearchForm/
+      SubHeaderAd/
+      WorkMenu/
+    sideBarLeft/
+      ProfileInfo/
+      RecentTags/
+    sideBarRight/
+      FooterLinks/
+      ProfileViewers/
+      RecommendedFeeds/
+    content/
+      PostItem/
+      PostForm/
   common/
     Spinner/
       Loader/
-  blocks/
-    Header/
-      Logo/
-      SearchForm/
-      MainMenu/
-      ProfileMenu/
-      WorkMenu/
-      SubHeaderAd/
-    SideBarLeft/
-      ProfileInfo/
-      RecentTags/
-    SideBarRight/
-      RecommendedFeeds/
-      ProfileViewers/
-      FooterLinks/
-    content/
-        PostItem/
-        PostForm/
