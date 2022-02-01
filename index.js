@@ -6,30 +6,16 @@ const {
   findIndentCount,
 } = require('./utils/string')
 const { getFunctionalComponentCode } = require('./utils/component')
-const { createJsFile } = require('./utils/files')
+const { createDirectory, createJsFile } = require('./utils/files')
+const { initStore } = require('./utils/path')
+
+const { basePath, setBasePath, getBasePath, removeLastPathItem } = initStore(['blocks'])
 
 let lineNumber = 0;
-
-const basePath = ['blocks']
-
-function setBasePath(path = '') {
-  basePath.push(path.trim().replace('/', ''))
-}
-
-function getBasePath() {
-  return basePath.join('/')
-}
-
-function removeLastPathItem() {
-  basePath.pop()
-}
-
-function createDirectory(pathWithName) {
-  return shell.mkdir('-p', pathWithName)
-}
-
 const SPACER = 'space'
 const INDENT_SIZE = 2
+const FILE_EXTENSION = 'js'
+const DEFINITION_FILE = 'definitions.yml'
 
 let currentIndentation = 0
 
@@ -40,17 +26,17 @@ const createComponentSet = (line) => {
       name: componentName
     })
     createJsFile({
-      pathToFile: `${getBasePath()}/${componentName}.js`,
+      pathToFile: `${getBasePath()}/${componentName}.${FILE_EXTENSION}`,
       data: componentCode
     })
     createJsFile({
-      pathToFile: `${getBasePath()}/index.js`,
+      pathToFile: `${getBasePath()}/index.${FILE_EXTENSION}`,
       data: `export { default } from './${componentName}'`
     })
   }
 }
 
-var s = fs.createReadStream('definitions.txt')
+const fileStream = fs.createReadStream(DEFINITION_FILE)
   .pipe(es.split())
   .pipe(es.mapSync(function (line) {
 
@@ -74,16 +60,16 @@ var s = fs.createReadStream('definitions.txt')
     }
 
     // pause the readstream
-    s.pause();
+    fileStream.pause();
 
     lineNumber += 1;
 
-    // process line here and call s.resume() when rdy
+    // process line here and call fileStream.resume() when rdy
     // function below was for logging memory usage
     // logMemoryUsage(lineNumber);
 
     // resume the readstream, possibly from a callback
-    s.resume();
+    fileStream.resume();
   })
     .on('error', function (err) {
       console.log('Error while reading file.', err);
