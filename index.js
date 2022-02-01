@@ -14,6 +14,10 @@ function getBasePath() {
   return basePath.join('/')
 }
 
+function removeLastPathItem() {
+  basePath.pop()
+}
+
 function hasWhiteSpace(S) {
   return (/\s/).test(S)
 }
@@ -28,6 +32,7 @@ function createDirectory(pathWithName) {
 
 const SPACER = 'space'
 const INDENT_SIZE = 2
+
 
 let currentIndentation = 0
 
@@ -44,9 +49,12 @@ var s = fs.createReadStream('definitions.txt')
       } else if (findIndentCount(line) > currentIndentation) {
         setBasePath(line.trim())
       } else if (findIndentCount(line) < currentIndentation) {
-        const repeatTimes = new Array(currentIndentation - findIndentCount(line) / INDENT_SIZE)
-        console.log('repeatTimes: ', repeatTimes)
-        repeatTimes.forEach(() => basePath.pop())
+        const repeatTimes = currentIndentation/findIndentCount(line)
+        const repeatTimesArray = new Array(Math.ceil(repeatTimes)).fill(7)
+        repeatTimesArray.forEach((_,i) => {
+          removeLastPathItem()
+        })
+        setBasePath(line.trim())
       }
       currentIndentation = findIndentCount(line)
       createDirectory(getBasePath())
@@ -68,6 +76,7 @@ var s = fs.createReadStream('definitions.txt')
       console.log('Error while reading file.', err);
     })
     .on('end', function () {
+      shell.echo('//Sorry, this script requires git').to('test.js')
       console.log('It done!')
     })
   );
