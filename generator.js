@@ -1,6 +1,7 @@
+#! /usr/bin/env node
+const program = require('commander')
 const fs = require('fs')
-const es = require('event-stream');
-const shell = require('shelljs');
+const es = require('event-stream')
 const {
   hasWhiteSpace,
   findIndentCount,

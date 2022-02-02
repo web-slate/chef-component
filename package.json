@@ -1,8 +1,12 @@
 {
   "name": "@chef/component",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "create components skeleton",
   "main": "index.js",
+  "engine": {
+    "node": "10",
+    "npm": "5"
+  },
   "scripts": {
     "clean": "rm -rf blocks",
     "create": "npm run clean && node generator.js"
@@ -18,7 +22,7 @@
     "react-components",
     "skeleton"
   ],
-  "author": "Venkat.R",
+  "author": "Venkat.R <ramsunvtech@gmail.com> (https://in.linkedin.com/in/venkatarchitect)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ramsunvtech/chef-component/issues"
@@ -27,6 +31,7 @@
   "dependencies": {
     "commander": "^9.0.0",
     "event-stream": "^4.0.1",
+    "inquirer": "^8.2.0",
     "shelljs": "^0.8.5"
   }
 }
