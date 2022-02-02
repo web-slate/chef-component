@@ -1,5 +1,5 @@
 {
-  "name": "@chef/component",
+  "name": "@fe-chef/component",
   "version": "0.1.0",
   "description": "create components skeleton",
   "main": "index.js",
@@ -19,7 +19,7 @@
     "url": "git+https://github.com/ramsunvtech/chef-component.git"
   },
   "bin": {
-    "chef-component": "./generator.js"
+    "fe-chef-component": "./generator.js"
   },
   "keywords": [
     "react-components",
