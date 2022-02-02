@@ -26,3 +26,9 @@ chef-component --definitionFile=definitions.txt --extension=jsx
 chef-component --f definitions.txt -l someDir/subDir1/subDir2
 chef-component --definitionFile=definitions.txt --location=someDir/subDir1/subDir2
 ```
+
+#### Create component in same path
+```
+chef-component --f definitions.txt -l .
+chef-component --definitionFile=definitions.txt --location=.
+```
