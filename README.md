@@ -1,34 +1,34 @@
-# Chef Component
+# @fe-chef/component
 Create Component Skeleton in Lightning speed.
 
 ### Below are useful commands.
 
 #### Create component from definition file.
 ```
-chef-component --f definitions.txt
-chef-component --definitionFile=definitions.txt
+npx fe-chef-component --f definitions.txt
+npx fe-chef-component --definitionFile=definitions.txt
 ```
 
 #### Create component in TypeScript format
 ```
-chef-component --f definitions.txt -e tsx
-chef-component --definitionFile=definitions.txt --extension=tsx
+npx fe-chef-component --f definitions.txt -e tsx
+npx fe-chef-component --definitionFile=definitions.txt --extension=tsx
 ```
 
 #### Create component in JSX format
 ```
-chef-component --f definitions.txt -e jsx
-chef-component --definitionFile=definitions.txt --extension=jsx
+npx fe-chef-component --f definitions.txt -e jsx
+npx fe-chef-component --definitionFile=definitions.txt --extension=jsx
 ```
 
 #### Create component from existing location.
 ```
-chef-component --f definitions.txt -l someDir/subDir1/subDir2
-chef-component --definitionFile=definitions.txt --location=someDir/subDir1/subDir2
+npx fe-chef-component --f definitions.txt -l someDir/subDir1/subDir2
+npx fe-chef-component --definitionFile=definitions.txt --location=someDir/subDir1/subDir2
 ```
 
 #### Create component in same path
 ```
-chef-component --f definitions.txt -l .
-chef-component --definitionFile=definitions.txt --location=.
+npx fe-chef-component --f definitions.txt -l .
+npx fe-chef-component --definitionFile=definitions.txt --location=.
 ```
