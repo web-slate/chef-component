@@ -16,6 +16,6 @@ blocks/
     FooterLinks
     ProfileViewers
     RecommendedFeeds
-common/
-  Spinner
-    Loader
+  common/
+    Spinner
+      Loader
