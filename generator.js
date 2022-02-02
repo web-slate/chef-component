@@ -47,7 +47,11 @@ const createComponentSet = (line) => {
       extension,
       name: componentName
     })
-    const componentIndexFileExtension = (FILE_EXTENSION === 'tsx') ? 'ts' : FILE_EXTENSION
+    const indexFileExtensionMap = {
+      'tsx': 'ts',
+      'jsx': 'js',
+    }
+    const componentIndexFileExtension = indexFileExtensionMap[FILE_EXTENSION] || FILE_EXTENSION
 
     createFile({
       pathToFile: `${getBasePath()}/${componentName}.${FILE_EXTENSION}`,

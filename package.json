@@ -16,7 +16,7 @@
     "url": "git+https://github.com/ramsunvtech/chef-component.git"
   },
   "bin": {
-    "@chef-component": "./generator.js"
+    "chef-component": "./generator.js"
   },
   "keywords": [
     "react-components",
