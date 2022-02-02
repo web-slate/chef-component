@@ -9,15 +9,34 @@ const {
 const { getFunctionalComponentCode } = require('./utils/component')
 const { createDirectory, createJsFile } = require('./utils/files')
 const { initStore } = require('./utils/path')
+const { error } = require('./utils/message')
+const packageJson = require("./package.json");
 
-const { basePath, setBasePath, getBasePath, removeLastPathItem } = initStore(['blocks'])
+program
+  .name('@chef/component')
+  .description('CLI to generate your component skeleton in few seconds')
+  .version(packageJson.version)
+  .option('-f, --definitionFile <value>', 'definition file')
+  .option('-l, --location <value>', 'location separated by slashes')
+  .option('-e, --extension <value>', 'component types are jsx, js, tsx')
+  .parse()
+
+const firstParam = program.args[0]
+const { definitionFile, location = '', extension = 'js' } = program.opts()
+const generateLocation = location.split('/')
+
+const { basePath, setBasePath, getBasePath, removeLastPathItem } = initStore(generateLocation)
 
 let lineNumber = 0;
 const TYPE = 'REACT'
 const SPACER = 'space'
 const INDENT_SIZE = 2
-const FILE_EXTENSION = 'js'
-const DEFINITION_FILE = 'definitions.yml'
+const FILE_EXTENSION = extension
+const DEFINITION_FILE = firstParam || definitionFile
+
+if (!DEFINITION_FILE) {
+  error('Please provide a indented definition file.')
+}
 
 let currentIndentation = 0
 
