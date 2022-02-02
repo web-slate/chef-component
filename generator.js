@@ -7,7 +7,7 @@ const {
   findIndentCount,
 } = require('./utils/string')
 const { getFunctionalComponentCode } = require('./utils/component')
-const { createDirectory, createJsFile } = require('./utils/files')
+const { createDirectory, createFile } = require('./utils/files')
 const { initStore } = require('./utils/path')
 const { error } = require('./utils/message')
 const packageJson = require("./package.json");
@@ -22,7 +22,7 @@ program
   .parse()
 
 const firstParam = program.args[0]
-const { definitionFile, location = '', extension = 'js' } = program.opts()
+const { definitionFile, location = 'components', extension = 'js' } = program.opts()
 const generateLocation = location.split('/')
 
 const { basePath, setBasePath, getBasePath, removeLastPathItem } = initStore(generateLocation)
@@ -44,14 +44,17 @@ const createComponentSet = (line) => {
   if (line.indexOf('/') === -1) {
     const componentName = line.trim()
     const componentCode = getFunctionalComponentCode({
+      extension,
       name: componentName
     })
-    createJsFile({
+    const componentIndexFileExtension = (FILE_EXTENSION === 'tsx') ? 'ts' : FILE_EXTENSION
+
+    createFile({
       pathToFile: `${getBasePath()}/${componentName}.${FILE_EXTENSION}`,
       data: componentCode
     })
-    createJsFile({
-      pathToFile: `${getBasePath()}/index.${FILE_EXTENSION}`,
+    createFile({
+      pathToFile: `${getBasePath()}/index.${componentIndexFileExtension}`,
       data: `export { default } from './${componentName}'`
     })
   }

@@ -9,7 +9,7 @@ export default ${name}
 const tsFunctionaComponent = (name) => `
 import { FC } from 'react'
 
-const >${name}: FC = () => {
+const ${name}: FC = () => {
   return (
   <>${name} goes here.</>
 )
