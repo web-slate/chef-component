@@ -6,7 +6,7 @@ function createDirectory(pathWithName) {
 
 function createFile(options) {
   const { pathToFile, data = '' } = options
-  return shell.echo(data).to(pathToFile)
+  return shell.ShellString(data, [['1>', '&2']]).to(pathToFile)
 }
 
 module.exports = {
