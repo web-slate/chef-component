@@ -6,7 +6,8 @@ const {
   hasWhiteSpace,
   findIndentCount,
 } = require('./utils/string')
-const { getFunctionalComponentCode } = require('./utils/component')
+const { getFunctionalComponentCode } = require('./utils/react/component')
+const { getComponentStyleCode } = require('./utils/react/styles')
 const { createDirectory, createFile } = require('./utils/files')
 const { initStore } = require('./utils/path')
 const { error } = require('./utils/message')
@@ -17,18 +18,19 @@ program
   .description('CLI to generate your component skeleton in few seconds')
   .version(packageJson.version)
   .option('-f, --definitionFile <value>', 'definition file')
+  .option('-s, --style <value>', 'component style type are css or sass or styled')
   .option('-l, --location <value>', 'location separated by slashes')
-  .option('-e, --extension <value>', 'component types are jsx, js, tsx')
+  .option('-e, --extension <value>', 'component types are jsx or js or tsx')
   .parse()
 
 const firstParam = program.args[0]
-const { definitionFile, location = 'components', extension = 'js' } = program.opts()
+const { definitionFile, style, location = 'components', extension = 'js' } = program.opts()
 const generateLocation = location.split('/')
 
 const { basePath, setBasePath, getBasePath, removeLastPathItem } = initStore(generateLocation)
 
 let lineNumber = 0;
-const TYPE = 'REACT'
+const TYPE = 'react'
 const SPACER = 'space'
 const INDENT_SIZE = 2
 const FILE_EXTENSION = extension
@@ -45,7 +47,8 @@ const createComponentSet = (line) => {
     const componentName = line.trim()
     const componentCode = getFunctionalComponentCode({
       extension,
-      name: componentName
+      name: componentName,
+      style
     })
     const indexFileExtensionMap = {
       'tsx': 'ts',
@@ -61,6 +64,17 @@ const createComponentSet = (line) => {
       pathToFile: `${getBasePath()}/index.${componentIndexFileExtension}`,
       data: `export { default } from './${componentName}'`
     })
+
+    if (style) {
+      const STYLE_FILE_EXTENSION = (style === 'styled') ? `${style}.js` : `styles.${style}`
+      const componentStyleCode = getComponentStyleCode({
+        style
+      })
+      createFile({
+        pathToFile: `${getBasePath()}/${componentName}.${STYLE_FILE_EXTENSION}`,
+        data: componentStyleCode
+      })
+    }
   }
 }
 

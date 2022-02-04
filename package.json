@@ -12,7 +12,7 @@
   },
   "scripts": {
     "clean": "rm -rf blocks components",
-    "create": "npm run clean && node generator.js"
+    "create": "node generator.js"
   },
   "repository": {
     "type": "git",
