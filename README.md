@@ -34,3 +34,21 @@ npx @fe-chef/component --definitionFile=definitions.txt --location=someDir/subDi
 npx @fe-chef/component -f definitions.txt -l .
 npx @fe-chef/component --definitionFile=definitions.txt --location=.
 ```
+
+#### Create component in with CSS file
+```
+npx @fe-chef/component -f definitions.txt -s css
+npx @fe-chef/component --definitionFile=definitions.txt --style=css
+```
+
+#### Create component in with SASS file
+```
+npx @fe-chef/component -f definitions.txt -s=sass
+npx @fe-chef/component --definitionFile=definitions.txt --style=sass
+```
+
+#### Create component in with Styled file
+```
+npx @fe-chef/component -f definitions.txt -s=styled
+npx @fe-chef/component --definitionFile=definitions.txt --style=styled
+```
