@@ -17,7 +17,7 @@ const sassStyleCode = () => `
   $text-color: blue;
 
   .line {
-    color: $body-color;
+    color: $text-color;
   }
 `
 
@@ -34,9 +34,9 @@ function getComponentStyleCode(options) {
     return styledComponentCode()
   } else if (style === 'sass') {
     return sassStyleCode()
+  } else if (style === 'css') {
+    return cssStyleCode()
   }
-
-  return cssStyleCode()
 }
 
 module.exports = {

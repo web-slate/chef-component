@@ -2,20 +2,3 @@ blocks/
   content/
     PostItem
     PostForm
-  header/
-    Logo
-    MainMenu
-    ProfileMenu
-    SearchForm
-    SubHeaderAd
-    WorkMenu
-  sideBarLeft/
-    ProfileInfo
-    RecentTags
-  sideBarRight/
-    FooterLinks
-    ProfileViewers
-    RecommendedFeeds
-  common/
-    Spinner
-      Loader

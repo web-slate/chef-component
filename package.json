@@ -1,6 +1,6 @@
 {
   "name": "@fe-chef/component",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "create components skeleton",
   "main": "index.js",
   "engine": {
@@ -26,7 +26,7 @@
     "skeleton"
   ],
   "author": "Venkat.R <ramsunvtech@gmail.com> (https://in.linkedin.com/in/venkatarchitect)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ramsunvtech/chef-component/issues"
   },
