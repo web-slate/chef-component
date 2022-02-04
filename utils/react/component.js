@@ -9,8 +9,11 @@ const getComponentStyles = ({ name, style }) => {
       <StyledBlock>${name} goes here.</StyledBlock>
     </>
   )`
-  } else if (!!style) {
-    styleImport = `import styles from './${name}.styles.${style}'`
+  } else if (['css', 'sass'].includes(style)) {
+    const styleExtensionMap = {
+      'sass': 'scss'
+    }
+    styleImport = `import styles from './${name}.styles.${styleExtensionMap[style] || style}'`
     returnStatement = `return (
     <>
       <p className={styles.line}>${name} goes here.</p>

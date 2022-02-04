@@ -65,8 +65,14 @@ const createComponentSet = (line) => {
       data: `export { default } from './${componentName}'`
     })
 
-    if (style) {
-      const STYLE_FILE_EXTENSION = (style === 'styled') ? `${style}.js` : `styles.${style}`
+    if (['css', 'sass', 'styled'].includes(style)) {
+      const styleExtensionMap = {
+        'styled': `${style}.js`,
+        'sass': 'styles.scss',
+        'css':  `styles.css`
+      }
+
+      const STYLE_FILE_EXTENSION = styleExtensionMap[style]
       const componentStyleCode = getComponentStyleCode({
         style
       })
