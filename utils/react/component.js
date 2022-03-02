@@ -3,7 +3,8 @@ const getComponentStyles = ({ name, style }) => {
   let returnStatement = `return <>${name} goes here.</>`
 
   if (style === 'styled') {
-    styleImport = `import { StyledBlock } from './${name}.${style}'`
+    styleImport = `
+import { StyledBlock } from './${name}.${style}'`
     returnStatement = `return (
     <>
       <StyledBlock>${name} goes here.</StyledBlock>
@@ -13,7 +14,8 @@ const getComponentStyles = ({ name, style }) => {
     const styleExtensionMap = {
       'sass': 'scss'
     }
-    styleImport = `import styles from './${name}.styles.${styleExtensionMap[style] || style}'`
+    styleImport = `
+import styles from './${name}.styles.${styleExtensionMap[style] || style}'`
     returnStatement = `return (
     <>
       <p className={styles.line}>${name} goes here.</p>
@@ -31,24 +33,21 @@ const jsFunctionaComponent = (options) => {
   const { name } = options
   const { styleImport, returnStatement } = getComponentStyles(options)
 
-  return `
-import React from 'react'
-${styleImport}
+  return `import React from 'react'${styleImport}
 
 function ${name}() {
   ${returnStatement}
 }
 
 export default ${name}
-  `
+`
 }
 
 const tsFunctionaComponent = (options) => {
   const { name } = options
   const { styleImport, returnStatement } = getComponentStyles(options)
 
-  return `
-import { FC } from 'react'
+  return `import { FC } from 'react'
 ${styleImport}
 
 const ${name}: FC = () => {
@@ -56,7 +55,7 @@ const ${name}: FC = () => {
 }
 
 export default ${name}
-  `
+`
 }
 
 function getFunctionalComponentCode(options) {
