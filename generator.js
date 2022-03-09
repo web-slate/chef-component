@@ -27,7 +27,7 @@ const firstParam = program.args[0]
 const { definitionFile, style, location = 'components', extension = 'js' } = program.opts()
 const generateLocation = location.split('/')
 
-const { basePath, setBasePath, getBasePath, removeLastPathItem } = initStore(generateLocation)
+const { basePath, setBasePath, getBasePath, removeLastPathItem, resetAllPaths } = initStore(generateLocation)
 
 let lineNumber = 0;
 const TYPE = 'react'
@@ -88,9 +88,12 @@ const fileStream = fs.createReadStream(DEFINITION_FILE)
   .pipe(es.split())
   .pipe(es.mapSync(function (line) {
 
-    if (!hasWhiteSpace(line) && currentIndentation === 0) {
+    if (!hasWhiteSpace(line)) {
+      resetAllPaths()
+      basePath.push(...generateLocation);
       setBasePath(line)
       createDirectory(getBasePath())
+      currentIndentation = 0;
     } else if (hasWhiteSpace(line)) {
       if (currentIndentation === findIndentCount(line)) {
         basePath.splice(-1, 1, line.trim())
