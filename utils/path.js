@@ -13,11 +13,16 @@ function initStore(initialDirectory = ['blocks']) {
     basePath.pop()
   }
 
+  function resetAllPaths(){
+    basePath.splice(0, basePath.length)
+  }
+
   return {
     basePath,
     setBasePath,
     getBasePath,
     removeLastPathItem,
+    resetAllPaths
   }
 }
 
