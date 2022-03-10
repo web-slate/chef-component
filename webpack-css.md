@@ -1,4 +1,4 @@
-# CSS Guidelines
+# CSS Webpack Guidelines
 
 If you create the component with CSS enabled. You will need to install `style-loader` and `css-loader`
 
