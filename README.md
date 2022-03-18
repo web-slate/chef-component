@@ -43,12 +43,12 @@ npx @fe-chef/component --definitionFile=definitions.txt --style=css
 
 #### Create component in with SASS file
 ```
-npx @fe-chef/component -f definitions.txt -s=sass
+npx @fe-chef/component -f definitions.txt -s sass
 npx @fe-chef/component --definitionFile=definitions.txt --style=scss
 ```
 
 #### Create component in with Styled file
 ```
-npx @fe-chef/component -f definitions.txt -s=styled
+npx @fe-chef/component -f definitions.txt -s styled
 npx @fe-chef/component --definitionFile=definitions.txt --style=styled
 ```
